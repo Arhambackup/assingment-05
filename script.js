@@ -8,3 +8,17 @@ const issueCount = document.getElementById('issue-count');
 
 let allIssues = []; 
 let currentFilter = 'all';
+
+// --- login function ---
+loginForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const user = document.getElementById('username').value;
+    const pass = document.getElementById('password').value;
+
+    if (user === 'admin' && pass === 'admin123') {
+        localStorage.setItem('isLoggedIn', 'true');
+        showDashboard();
+    } else {
+        alert("Invalid credentials!");
+    }
+});
