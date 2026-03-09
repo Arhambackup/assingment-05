@@ -29,3 +29,8 @@ function showDashboard() {
     dashboardScreen.classList.remove('hidden');
     fetchIssues();
 }
+// Logout function//
+function logout() {
+    localStorage.removeItem('isLoggedIn');
+    location.reload();
+}
