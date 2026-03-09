@@ -51,3 +51,28 @@ async function fetchIssues(query = '') {
         console.error("Error fetching issues:", err);
     }
 }
+
+
+//   FILTER LOGIC  //
+function filterIssues(status) {
+    currentFilter = status;
+    
+    // Update Tab UI //
+    const tabs = document.querySelectorAll('.tab');
+    tabs.forEach(tab => {
+        tab.classList.remove('tab-active', 'bg-indigo-600', 'text-white');
+        tab.classList.add('bg-white', 'border');
+        if (tab.innerText.toLowerCase() === status) {
+            tab.classList.add('tab-active', 'bg-indigo-600', 'text-white');
+            tab.classList.remove('bg-white', 'border');
+        }
+    });
+
+    // Filter data //
+    let filtered = allIssues;
+    if (status !== 'all') {
+        filtered = allIssues.filter(issue => issue.status?.toLowerCase() === status);
+    }
+    
+    renderIssues(filtered);
+}
