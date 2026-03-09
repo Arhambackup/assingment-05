@@ -151,3 +151,18 @@ async function viewDetails(id) {
         content.innerHTML = `<p class="text-red-500">Failed to load issue details.</p>`;
     }
 }
+
+//    helpers //
+function getPriorityBorder(p) {
+    const val = p?.toLowerCase();
+    if (val === 'high') return 'border-t-red-500';
+    if (val === 'medium') return 'border-t-yellow-500';
+    return 'border-t-green-500';
+}
+
+function getPriorityBadge(p) {
+    const val = p?.toLowerCase();
+    if (val === 'high') return 'text-red-500 bg-red-50';
+    if (val === 'medium') return 'text-yellow-600 bg-yellow-50';
+    return 'text-green-600 bg-green-50';
+}
