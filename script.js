@@ -22,3 +22,10 @@ loginForm.addEventListener('submit', (e) => {
         alert("Invalid credentials!");
     }
 });
+
+// dashbord function//
+function showDashboard() {
+    loginScreen.classList.add('hidden');
+    dashboardScreen.classList.remove('hidden');
+    fetchIssues();
+}
