@@ -166,3 +166,14 @@ function getPriorityBadge(p) {
     if (val === 'medium') return 'text-yellow-600 bg-yellow-50';
     return 'text-green-600 bg-green-50';
 }
+// Search function //
+let timer;
+searchInput.addEventListener('input', (e) => {
+    clearTimeout(timer);
+    timer = setTimeout(() => fetchIssues(e.target.value), 500);
+});
+
+// Initial Load //
+if (localStorage.getItem('isLoggedIn') === 'true') {
+    showDashboard();
+}
