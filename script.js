@@ -34,3 +34,20 @@ function logout() {
     localStorage.removeItem('isLoggedIn');
     location.reload();
 }
+
+
+// --- data fetching ---
+async function fetchIssues(query = '') {
+    const url = query
+        ? `${API_BASE}/issues/search?q=${query}`
+        : `${API_BASE}/issues`;
+
+    try {
+        const res = await fetch(url);
+        const result = await res.json();
+        allIssues = result.data || result; 
+        filterIssues(currentFilter); 
+    } catch (err) {
+        console.error("Error fetching issues:", err);
+    }
+}
